@@ -1,6 +1,3 @@
-import Data.List.Ordered (minus)
-
-primes = sieve [2..]
-  where sieve (p:xs) = p : sieve (xs `minus` [p*p, p*p+p..])
+import Primes (primes)
 
 main = print $ primes !! 10000
