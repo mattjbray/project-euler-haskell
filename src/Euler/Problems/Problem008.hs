@@ -34,7 +34,7 @@ findLargestProductOfLength :: Int -> Int
 findLargestProductOfLength n = go 0 0
   where
     go offset currentLargest
-      | offset > (length digits) - n = currentLargest
+      | offset > length digits - n = currentLargest
       | otherwise = go (offset + 1) (max (productAt n offset) currentLargest)
 
 solve :: Int

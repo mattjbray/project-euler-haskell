@@ -26,10 +26,10 @@ raw = ["08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08"
 type Grid = [[Int]]
 
 grid :: Grid
-grid = (map . map) read (map words raw)
+grid = map (map read . words) raw
 
 sizeX :: Int
-sizeX = length (grid !! 0)
+sizeX = length (head grid)
 
 sizeY :: Int
 sizeY = length grid
@@ -51,7 +51,7 @@ mult4 x y DiagRL
   | otherwise        = product (map (\ i -> (grid !! (y+i)) !! (x-i)) [0..3])
 
 largestAt :: Int -> Int -> Int
-largestAt x y = maximum (map (\ dir -> mult4 x y dir) [Horizontal, Vertical, DiagLR, DiagRL])
+largestAt x y = maximum (map (mult4 x y) [Horizontal, Vertical, DiagLR, DiagRL])
 
 solve :: Int
 solve = maximum [largestAt x y | x <- [0..(sizeX - 1)], y <- [0..(sizeY - 1)]]

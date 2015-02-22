@@ -7,7 +7,7 @@ isEvenlyDivisibleByAllTo :: Int -> Int -> Bool
 isEvenlyDivisibleByAllTo n a = all (\ x -> a `mod` x == 0) toTest
   where
     toTest :: [Int]
-    toTest = n : (reverse (nonFactorsOf n))
+    toTest = n : reverse (nonFactorsOf n)
 
 smallestEvenlyDivisibleByAllTo :: Int -> Int
 smallestEvenlyDivisibleByAllTo n = head [x | x <- [n,2 * n..], isEvenlyDivisibleByAllTo n x]

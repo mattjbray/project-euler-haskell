@@ -39,14 +39,14 @@ solvedProblems = sortBy (compare `on` length) (keys solvers)
 main :: IO ()
 main = do
   args <- getArgs
-  if (any (\arg -> arg == "-h" || arg == "--help") args)
-    then putStrLn ("usage: project-euler-haskell [<problem_number>...]")
-    else if (null args)
+  if any (\arg -> arg == "-h" || arg == "--help") args
+    then putStrLn "usage: project-euler-haskell [<problem_number>...]"
+    else if null args
       then mapM_ solve solvedProblems
       else mapM_ solve args
   where
-    solve problem = case (lookup problem solvers) of
-      Just x -> putStrLn ("problem " ++ problem ++ ": " ++ (show x))
+    solve problem = case lookup problem solvers of
+      Just x -> putStrLn ("problem " ++ problem ++ ": " ++ show x)
       Nothing -> putStr $ unlines [ "no solver for problem " ++ problem
-                                  , "solved problems: " ++ (intercalate ", " solvedProblems)
+                                  , "solved problems: " ++ intercalate ", " solvedProblems
                                   ]
