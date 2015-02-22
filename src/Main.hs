@@ -1,7 +1,7 @@
 import Prelude hiding (lookup)
 import Data.Function (on)
-import Data.List (sortBy)
-import Data.Map hiding (null)
+import Data.List (intercalate, sortBy)
+import Data.Map (Map, fromList, lookup, keys)
 import System.Environment (getArgs)
 
 import qualified Euler.Problems.Problem001 as P001
@@ -33,13 +33,20 @@ solvers = fromList [ ("1" , P001.solve)
                    , ("12", P012.solve)
                    ]
 
+solvedProblems :: [String]
+solvedProblems = sortBy (compare `on` length) (keys solvers)
+
 main :: IO ()
 main = do
   args <- getArgs
-  if (null args)
-    then mapM_ solve (sortBy (compare `on` length) (keys solvers))
-    else mapM_ solve args
+  if (any (\arg -> arg == "-h" || arg == "--help") args)
+    then putStrLn ("usage: project-euler-haskell [<problem_number>...]")
+    else if (null args)
+      then mapM_ solve solvedProblems
+      else mapM_ solve args
   where
     solve problem = case (lookup problem solvers) of
       Just x -> putStrLn ("problem " ++ problem ++ ": " ++ (show x))
-      Nothing -> putStrLn ("no solver for problem " ++ problem)
+      Nothing -> putStr $ unlines [ "no solver for problem " ++ problem
+                                  , "solved problems: " ++ (intercalate ", " solvedProblems)
+                                  ]
