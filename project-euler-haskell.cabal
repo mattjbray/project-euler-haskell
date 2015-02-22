@@ -1,0 +1,48 @@
+name:                project-euler-haskell
+version:             0.1.0.0
+author:              Matt Bray
+maintainer:          mattjbray@gmail.com
+category:            Math
+build-type:          Simple
+cabal-version:       >=1.10
+
+library
+  ghc-options: -Wall
+  exposed-modules: Euler.Lib.Primes
+                 , Euler.Problems.Problem001
+                 , Euler.Problems.Problem002
+                 , Euler.Problems.Problem003
+                 , Euler.Problems.Problem004
+                 , Euler.Problems.Problem005
+                 , Euler.Problems.Problem006
+                 , Euler.Problems.Problem007
+                 , Euler.Problems.Problem008
+                 , Euler.Problems.Problem009
+                 , Euler.Problems.Problem010
+                 , Euler.Problems.Problem011
+                 , Euler.Problems.Problem012
+  build-depends: base >=4.7 && <4.8
+               , data-ordlist
+  hs-source-dirs: src
+  default-language: Haskell2010
+
+
+executable project-euler-haskell
+  ghc-options: -Wall
+  main-is:             Main.hs
+  build-depends: containers
+               , base >=4.7 && <4.8
+               , data-ordlist
+               , project-euler-haskell
+  hs-source-dirs: src
+  default-language:    Haskell2010
+
+test-suite tests
+  ghc-options: -Wall
+  default-language:    Haskell2010
+  type: exitcode-stdio-1.0
+  main-is: Tests.hs
+  hs-source-dirs: tests
+  build-depends: base
+               , project-euler-haskell
+               , hspec >= 2.1 && < 2.2

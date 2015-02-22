@@ -1,3 +1,6 @@
+module Euler.Problems.Problem008 where
+
+digits :: String
 digits = concat [
   "73167176531330624919225119674426574742355349194934",
   "96983520312774506326239578318016984801869478851843",
@@ -21,19 +24,18 @@ digits = concat [
   "71636269561882670428252483600823257530420752963450"
   ]
 
-n = 13
+getAt :: Int -> Int -> [Int]
+getAt n offset = map (read . (:"")) (take n (drop offset digits))
 
-getAt :: Int -> [Int]
-getAt offset = map (read . (:"")) (take n (drop offset digits))
+productAt :: Int -> Int -> Int
+productAt n offset = product (getAt n offset)
 
-productAt :: Int -> Int
-productAt offset = product (getAt offset)
-
-findLargest :: Int
-findLargest = go 0 0
+findLargestProductOfLength :: Int -> Int
+findLargestProductOfLength n = go 0 0
   where
     go offset currentLargest
       | offset > (length digits) - n = currentLargest
-      | otherwise = go (offset + 1) (max (productAt offset) currentLargest)
+      | otherwise = go (offset + 1) (max (productAt n offset) currentLargest)
 
-main = print $ findLargest
+solve :: Int
+solve = findLargestProductOfLength 13
