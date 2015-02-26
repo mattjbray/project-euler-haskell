@@ -3,7 +3,7 @@ FROM haskell:7.8
 RUN cabal update && \
     cabal install hlint ghc-mod
 
-RUN echo "PATH=/root/.cabal/bin:$PATH" >> /root/.bashrc
+ENV PATH /root/.cabal/bin:$PATH
 
 WORKDIR /code
 
