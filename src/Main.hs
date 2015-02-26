@@ -1,4 +1,6 @@
 import Prelude hiding (lookup)
+import Control.Concurrent (forkFinally)
+import Control.Concurrent.MVar (MVar, newEmptyMVar, putMVar, takeMVar)
 import Data.Function (on)
 import Data.List (intercalate, sortBy)
 import Data.Map (Map, fromList, lookup, keys)
@@ -36,17 +38,26 @@ solvers = fromList [ ("1" , P001.solve)
 solvedProblems :: [String]
 solvedProblems = sortBy (compare `on` length) (keys solvers)
 
+solve :: String -> IO ()
+solve problem = case lookup problem solvers of
+  Just x  -> putStrLn ("problem " ++ problem ++ ": " ++ show x)
+  Nothing -> putStr $ unlines [ "no solver for problem " ++ problem
+                              , "solved problems: " ++ intercalate ", " solvedProblems
+                              ]
+
+myForkIO :: IO () -> IO (MVar ())
+myForkIO io = do
+  mvar <- newEmptyMVar
+  _ <- forkFinally io (\_ -> putMVar mvar ())
+  return mvar
+
 main :: IO ()
 main = do
   args <- getArgs
   if any (\arg -> arg == "-h" || arg == "--help") args
     then putStrLn "usage: project-euler-haskell [<problem_number>...]"
-    else if null args
-      then mapM_ solve solvedProblems
-      else mapM_ solve args
-  where
-    solve problem = case lookup problem solvers of
-      Just x -> putStrLn ("problem " ++ problem ++ ": " ++ show x)
-      Nothing -> putStr $ unlines [ "no solver for problem " ++ problem
-                                  , "solved problems: " ++ intercalate ", " solvedProblems
-                                  ]
+    else do
+      mvars <- mapM (myForkIO . solve) (if null args then solvedProblems else args)
+      -- wait on threads
+      mapM_ takeMVar mvars
+      putStrLn "Done."

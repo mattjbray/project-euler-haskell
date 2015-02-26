@@ -28,7 +28,7 @@ library
 
 
 executable project-euler-haskell
-  ghc-options: -Wall
+  ghc-options: -Wall -threaded -with-rtsopts=-N
   main-is:             Main.hs
   build-depends: containers
                , base >=4.7 && <4.8
