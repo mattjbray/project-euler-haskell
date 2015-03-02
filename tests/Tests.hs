@@ -12,6 +12,7 @@ import Euler.Problems.Problem009 (productsWhereTrianglesSumTo)
 import Euler.Problems.Problem010 (sumPrimesTo)
 import Euler.Problems.Problem011 (largestAt)
 import Euler.Problems.Problem012 (firstTriangleWithNDivisors)
+import Euler.Problems.Problem014 (collatz)
 import Test.Hspec
 
 main :: IO ()
@@ -66,3 +67,7 @@ main = hspec $ do
   describe "Problem 12" $ do
     it "solves the given example" $ do
       firstTriangleWithNDivisors 5 `shouldBe` 28
+
+  describe "Problem 13" $ do
+    it "solves the given example" $ do
+      collatz 13 `shouldBe` [13, 40, 20, 10, 5, 16, 8, 4, 2, 1]
