@@ -105,4 +105,4 @@ numbers = [
   ]
 
 solve :: Int
-solve = (read . (take 10) . show . sum) numbers
+solve = (read . take 10 . show . sum) numbers

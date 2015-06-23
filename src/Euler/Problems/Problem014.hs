@@ -14,7 +14,7 @@ collatz n
   | otherwise = n : collatz (next n)
 
 nWithLongestChainUnder :: Int -> Int
-nWithLongestChainUnder n = fst $ maximumBy (compare `on` snd) $ (map (\i -> (i, length (collatz i))) [1..n])
+nWithLongestChainUnder n = fst $ maximumBy (compare `on` snd) $ map (\i -> (i, length (collatz i))) [1..n]
 
 solve :: Int
 solve = nWithLongestChainUnder 1000000
