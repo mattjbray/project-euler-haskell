@@ -14,6 +14,7 @@ import Euler.Problems.Problem011 (largestAt)
 import Euler.Problems.Problem012 (firstTriangleWithNDivisors)
 import Euler.Problems.Problem014 (collatz)
 import Euler.Problems.Problem015 (routes)
+import Euler.Problems.Problem016 (sumDigits)
 import Test.Hspec
 
 main :: IO ()
@@ -76,3 +77,7 @@ main = hspec $ do
   describe "Problem 15" $
     it "solves the given example" $
       routes 2 `shouldBe` 6
+
+  describe "Problem 16" $
+    it "solves the given example" $
+      sumDigits ((2::Integer) ^ (15::Integer)) `shouldBe` 26
