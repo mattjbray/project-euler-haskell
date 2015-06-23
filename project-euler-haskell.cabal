@@ -22,6 +22,7 @@ library
                  , Euler.Problems.Problem011
                  , Euler.Problems.Problem012
                  , Euler.Problems.Problem014
+                 , Euler.Problems.Problem015
   build-depends: base >=4.7 && <4.9
                , data-ordlist
   hs-source-dirs: src
