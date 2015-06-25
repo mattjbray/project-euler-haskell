@@ -17,6 +17,7 @@ import Euler.Problems.Problem015 (routes)
 import Euler.Problems.Problem016 (sumDigits)
 import Euler.Problems.Problem017 (letterCount, letterCountRange)
 import Euler.Problems.Problem018 (maxTotal, exampleTree)
+import Euler.Problems.Problem020 (sumFactDigits)
 import Test.Hspec
 
 main :: IO ()
@@ -99,3 +100,7 @@ main = hspec $ do
   describe "Problem 18" $
     it "solves the given example" $
       maxTotal exampleTree `shouldBe` 23
+
+  describe "Problem 20" $
+    it "solves the given example" $
+      sumFactDigits 10 `shouldBe` 27
