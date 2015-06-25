@@ -16,6 +16,7 @@ import Euler.Problems.Problem014 (collatz)
 import Euler.Problems.Problem015 (routes)
 import Euler.Problems.Problem016 (sumDigits)
 import Euler.Problems.Problem017 (letterCount, letterCountRange)
+import Euler.Problems.Problem018 (maxTotal, exampleTree)
 import Test.Hspec
 
 main :: IO ()
@@ -94,3 +95,7 @@ main = hspec $ do
       letterCount 342 `shouldBe` 23
     it "counts 115 correctly" $
       letterCount 115 `shouldBe` 20
+
+  describe "Problem 18" $
+    it "solves the given example" $
+      maxTotal exampleTree `shouldBe` 23
