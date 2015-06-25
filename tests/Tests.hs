@@ -19,6 +19,7 @@ import Euler.Problems.Problem017 (letterCount, letterCountRange)
 import Euler.Problems.Problem018 (maxTotal, exampleTree)
 import Euler.Problems.Problem020 (sumFactDigits)
 import Euler.Problems.Problem021 (sumProperDivisors)
+import Euler.Problems.Problem022 (sumValues, testNames)
 import Test.Hspec
 
 main :: IO ()
@@ -110,3 +111,7 @@ main = hspec $ do
     it "solves the given example" $ do
       sumProperDivisors 220 `shouldBe` 284
       sumProperDivisors 284 `shouldBe` 220
+
+  describe "Problem 22" $
+    it "sums the alphabetical values" $
+      sumValues testNames `shouldBe` 1 + 53 * 2

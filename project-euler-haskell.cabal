@@ -30,9 +30,11 @@ library
                  , Euler.Problems.Problem019
                  , Euler.Problems.Problem020
                  , Euler.Problems.Problem021
+                 , Euler.Problems.Problem022
   build-depends: base >=4.7 && <4.9
                , data-ordlist
                , digits
+               , text
   hs-source-dirs: src
   default-language: Haskell2010
 
@@ -45,6 +47,7 @@ executable project-euler-haskell
                , data-ordlist
                , digits
                , project-euler-haskell
+               , text
   hs-source-dirs: src
   default-language:    Haskell2010
 
@@ -58,3 +61,4 @@ test-suite tests
                , digits
                , project-euler-haskell
                , hspec >= 2.1 && < 2.2
+               , text

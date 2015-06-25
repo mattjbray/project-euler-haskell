@@ -26,6 +26,7 @@ import qualified Euler.Problems.Problem018 as P018
 import qualified Euler.Problems.Problem019 as P019
 import qualified Euler.Problems.Problem020 as P020
 import qualified Euler.Problems.Problem021 as P021
+import qualified Euler.Problems.Problem022 as P022
 
 solvers :: Map String Solution
 solvers = fromList [ ("1" , P001.solve)
@@ -51,8 +52,11 @@ solvers = fromList [ ("1" , P001.solve)
                    , ("21", P021.solve)
                    ]
 
+ioSolvers :: Map String (IO Solution)
+ioSolvers = fromList [ ("22", P022.solve) ]
+
 solvedProblems :: [String]
-solvedProblems = sortBy (compare `on` length) (keys solvers)
+solvedProblems = sortBy (compare `on` length) (keys solvers ++ keys ioSolvers)
 
 main :: IO ()
 main = do
@@ -64,7 +68,10 @@ main = do
       else mapM_ solve args
   where
     solve problem = case lookup problem solvers of
-      Just x -> putStrLn ("problem " ++ problem ++ ": " ++ show x)
-      Nothing -> putStr $ unlines [ "no solver for problem " ++ problem
-                                  , "solved problems: " ++ intercalate ", " solvedProblems
-                                  ]
+      Just x -> showSolution problem x
+      Nothing -> case lookup problem ioSolvers of
+        Just x -> x >>= showSolution problem
+        Nothing -> putStr $ unlines [ "no solver for problem " ++ problem
+                                    , "solved problems: " ++ intercalate ", " solvedProblems
+                                    ]
+    showSolution problem x = putStrLn ("problem " ++ problem ++ ": " ++ show x)

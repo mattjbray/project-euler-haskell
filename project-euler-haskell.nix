@@ -1,4 +1,4 @@
-{ mkDerivation, base, containers, data-ordlist, digits, hspec
+{ mkDerivation, base, containers, data-ordlist, digits, hspec, text
 , stdenv
 }:
 mkDerivation {
@@ -7,7 +7,7 @@ mkDerivation {
   src = ./.;
   isLibrary = true;
   isExecutable = true;
-  buildDepends = [ base containers data-ordlist digits ];
-  testDepends = [ base digits hspec ];
+  buildDepends = [ base containers data-ordlist digits text ];
+  testDepends = [ base containers data-ordlist digits hspec text ];
   license = stdenv.lib.licenses.unfree;
 }
