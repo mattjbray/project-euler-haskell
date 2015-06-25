@@ -15,6 +15,7 @@ import Euler.Problems.Problem012 (firstTriangleWithNDivisors)
 import Euler.Problems.Problem014 (collatz)
 import Euler.Problems.Problem015 (routes)
 import Euler.Problems.Problem016 (sumDigits)
+import Euler.Problems.Problem017 (letterCount, letterCountRange)
 import Test.Hspec
 
 main :: IO ()
@@ -81,3 +82,15 @@ main = hspec $ do
   describe "Problem 16" $
     it "solves the given example" $
       sumDigits ((2::Integer) ^ (15::Integer)) `shouldBe` 26
+
+  describe "Problem 17" $ do
+    it "solves the given example" $
+      letterCountRange [1..5] `shouldBe` 19
+    it "counts 22 correctly" $
+      letterCount 22 `shouldBe` length "twentytwo"
+    it "counts 122 correctly" $
+      letterCount 122 `shouldBe` length "onehundredandtwentytwo"
+    it "counts 342 correctly" $
+      letterCount 342 `shouldBe` 23
+    it "counts 115 correctly" $
+      letterCount 115 `shouldBe` 20

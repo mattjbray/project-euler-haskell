@@ -21,6 +21,7 @@ import qualified Euler.Problems.Problem013 as P013
 import qualified Euler.Problems.Problem014 as P014
 import qualified Euler.Problems.Problem015 as P015
 import qualified Euler.Problems.Problem016 as P016
+import qualified Euler.Problems.Problem017 as P017
 
 solvers :: Map String Solution
 solvers = fromList [ ("1" , P001.solve)
@@ -39,6 +40,7 @@ solvers = fromList [ ("1" , P001.solve)
                    , ("14", P014.solve)
                    , ("15", P015.solve)
                    , ("16", P016.solve)
+                   , ("17", P017.solve)
                    ]
 
 solvedProblems :: [String]
