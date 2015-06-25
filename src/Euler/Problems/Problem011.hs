@@ -1,5 +1,7 @@
 module Euler.Problems.Problem011 where
 
+import Euler.Lib.Solution (Solution(MkSolution))
+
 raw :: [String]
 raw = ["08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08"
       ,"49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00"
@@ -53,5 +55,5 @@ mult4 x y DiagRL
 largestAt :: Int -> Int -> Int
 largestAt x y = maximum (map (mult4 x y) [Horizontal, Vertical, DiagLR, DiagRL])
 
-solve :: Int
-solve = maximum [largestAt x y | x <- [0..(sizeX - 1)], y <- [0..(sizeY - 1)]]
+solve :: Solution
+solve = MkSolution $ maximum [largestAt x y | x <- [0..(sizeX - 1)], y <- [0..(sizeY - 1)]]

@@ -1,5 +1,7 @@
 module Euler.Problems.Problem008 where
 
+import Euler.Lib.Solution (Solution(MkSolution))
+
 digits :: String
 digits = concat [
   "73167176531330624919225119674426574742355349194934",
@@ -37,5 +39,5 @@ findLargestProductOfLength n = go 0 0
       | offset > length digits - n = currentLargest
       | otherwise = go (offset + 1) (max (productAt n offset) currentLargest)
 
-solve :: Int
-solve = findLargestProductOfLength 13
+solve :: Solution
+solve = MkSolution $ findLargestProductOfLength 13

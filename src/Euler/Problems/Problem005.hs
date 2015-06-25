@@ -1,5 +1,7 @@
 module Euler.Problems.Problem005 where
 
+import Euler.Lib.Solution (Solution(MkSolution))
+
 nonFactorsOf :: Int -> [Int]
 nonFactorsOf n = [x | x <- [2..n], n `mod` x /= 0]
 
@@ -12,5 +14,5 @@ isEvenlyDivisibleByAllTo n a = all (\ x -> a `mod` x == 0) toTest
 smallestEvenlyDivisibleByAllTo :: Int -> Int
 smallestEvenlyDivisibleByAllTo n = head [x | x <- [n,2 * n..], isEvenlyDivisibleByAllTo n x]
 
-solve :: Int
-solve = smallestEvenlyDivisibleByAllTo 20
+solve :: Solution
+solve = MkSolution $ smallestEvenlyDivisibleByAllTo 20

@@ -1,5 +1,7 @@
 module Euler.Problems.Problem015 where
 
+import Euler.Lib.Solution (Solution(MkSolution))
+
 routes :: Int -> Int
 routes n = routesInto n n
 
@@ -11,5 +13,5 @@ routesInto = (!!) . (!!) (map (\x -> map (f x) [0..]) [0..])
     f _ 0 = 1
     f x y = routesInto x (y-1) + routesInto (x-1) y
 
-solve :: Int
-solve = routes 20
+solve :: Solution
+solve = MkSolution $ routes 20

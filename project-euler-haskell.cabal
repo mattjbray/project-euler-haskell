@@ -9,6 +9,7 @@ cabal-version:       >=1.10
 library
   ghc-options: -Wall
   exposed-modules: Euler.Lib.Primes
+                 , Euler.Lib.Solution
                  , Euler.Problems.Problem001
                  , Euler.Problems.Problem002
                  , Euler.Problems.Problem003

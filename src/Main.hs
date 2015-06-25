@@ -4,6 +4,7 @@ import Data.List (intercalate, sortBy)
 import Data.Map (Map, fromList, lookup, keys)
 import System.Environment (getArgs)
 
+import Euler.Lib.Solution (Solution)
 import qualified Euler.Problems.Problem001 as P001
 import qualified Euler.Problems.Problem002 as P002
 import qualified Euler.Problems.Problem003 as P003
@@ -21,10 +22,9 @@ import qualified Euler.Problems.Problem014 as P014
 import qualified Euler.Problems.Problem015 as P015
 import qualified Euler.Problems.Problem016 as P016
 
-solvers :: Map String Int
+solvers :: Map String Solution
 solvers = fromList [ ("1" , P001.solve)
                    , ("2" , P002.solve)
-                   , ("3" , P003.solve)
                    , ("3" , P003.solve)
                    , ("4" , P004.solve)
                    , ("5" , P005.solve)

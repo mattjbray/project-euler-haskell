@@ -1,5 +1,7 @@
 module Euler.Problems.Problem013 where
 
+import Euler.Lib.Solution (Solution(MkSolution))
+
 numbers :: [Integer]
 numbers = [
   37107287533902102798797998220837590246510135740250,
@@ -104,5 +106,8 @@ numbers = [
   53503534226472524250874054075591789781264330331690
   ]
 
-solve :: Int
-solve = (read . take 10 . show . sum) numbers
+solve :: Solution
+solve = MkSolution solution
+  where
+    solution :: Int
+    solution = (read . take 10 . show . sum) numbers
