@@ -37,9 +37,9 @@ right :: [[Int]] -> [[Int]]
 right tree = map tail (tail tree)
 
 maxTotal :: [[Int]] -> Int
-maxTotal [[leaf]]        = leaf
-maxTotal tree@([elem]:_) = elem + max (maxTotal (left tree)) (maxTotal (right tree))
-maxTotal _               = error "Not a valid tree"
+maxTotal [[leaf]]     = leaf
+maxTotal tree@([x]:_) = x + max (maxTotal (left tree)) (maxTotal (right tree))
+maxTotal _            = error "Not a valid tree"
 
 solve :: Solution
 solve = MkSolution $ maxTotal problemTree
