@@ -32,6 +32,7 @@ library
                  , Euler.Problems.Problem020
                  , Euler.Problems.Problem021
                  , Euler.Problems.Problem022
+                 , Euler.Problems.Problem023
   build-depends: base >=4.7 && <4.9
                , data-ordlist
                , digits

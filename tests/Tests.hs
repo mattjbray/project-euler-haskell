@@ -20,6 +20,7 @@ import Euler.Problems.Problem018 (maxTotal, exampleTree)
 import Euler.Problems.Problem020 (sumFactDigits)
 import Euler.Problems.Problem021 (sumProperDivisors)
 import Euler.Problems.Problem022 (sumValues, testNames)
+import Euler.Problems.Problem023 (NumberType(Abundant, Perfect), numberType, isSumOfAbundants)
 import Test.Hspec
 
 main :: IO ()
@@ -105,7 +106,7 @@ main = hspec $ do
 
   describe "Problem 20" $
     it "solves the given example" $
-      sumFactDigits 10 `shouldBe` 27
+      sumFactDigits (10::Int) `shouldBe` 27
 
   describe "Problem 21" $
     it "solves the given example" $ do
@@ -115,3 +116,11 @@ main = hspec $ do
   describe "Problem 22" $
     it "sums the alphabetical values" $
       sumValues testNames `shouldBe` 1 + 53 * 2
+
+  describe "Problem 23" $ do
+    it "tests for perfect numbers" $ do
+      numberType (28::Int) `shouldBe` Perfect
+      numberType (12::Int) `shouldBe` Abundant
+    it "checks if a number is a sum of two abundant numbers" $ do
+      isSumOfAbundants (24::Int) `shouldBe` True
+      isSumOfAbundants (23::Int) `shouldBe` False
