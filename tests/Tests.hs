@@ -1,8 +1,9 @@
 module Main where
 
+import Euler.Lib.Fibonacci (fibs)
 import Euler.Lib.Primes (primes)
 import Euler.Problems.Problem001 (sumMultiples)
-import Euler.Problems.Problem002 (fibs, sumEvenFibsTo)
+import Euler.Problems.Problem002 (sumEvenFibsTo)
 import Euler.Problems.Problem003 (largestPrimeFactor)
 import Euler.Problems.Problem004 (largestPalindromeProduct)
 import Euler.Problems.Problem005 (smallestEvenlyDivisibleByAllTo)
@@ -21,6 +22,7 @@ import Euler.Problems.Problem020 (sumFactDigits)
 import Euler.Problems.Problem021 (sumProperDivisors)
 import Euler.Problems.Problem022 (sumValues, testNames)
 import Euler.Problems.Problem023 (NumberType(Abundant, Perfect), numberType, isSumOfAbundants)
+import Euler.Problems.Problem025 (listWithIndex, firstWithNDigits)
 import Test.Hspec
 
 main :: IO ()
@@ -124,3 +126,9 @@ main = hspec $ do
     it "checks if a number is a sum of two abundant numbers" $ do
       isSumOfAbundants (24::Int) `shouldBe` True
       isSumOfAbundants (23::Int) `shouldBe` False
+
+  describe "Problem 25" $ do
+    it "provides listWithIndex" $
+      listWithIndex ['a'..'c'] `shouldBe` [(0,'a'), (1,'b'), (2,'c')]
+    it "finds the first fib number with 3 digits" $
+      firstWithNDigits 3 fibs `shouldBe` 12

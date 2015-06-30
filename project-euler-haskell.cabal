@@ -10,6 +10,7 @@ library
   ghc-options: -Wall
   exposed-modules: Euler.Lib.Primes
                  , Euler.Lib.Divisors
+                 , Euler.Lib.Fibonacci
                  , Euler.Lib.Solution
                  , Euler.Problems.Problem001
                  , Euler.Problems.Problem002
@@ -34,6 +35,7 @@ library
                  , Euler.Problems.Problem022
                  , Euler.Problems.Problem023
                  , Euler.Problems.Problem024
+                 , Euler.Problems.Problem025
   build-depends: base >=4.7 && <4.9
                , data-ordlist
                , digits
